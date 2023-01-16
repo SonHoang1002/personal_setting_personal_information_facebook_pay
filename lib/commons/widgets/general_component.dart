@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 
-class InformationUserGroupWidget extends StatelessWidget {
+class GeneralComponent extends StatelessWidget {
   final Widget? prefixWidget;
   final List<Widget> contentWidget;
   final Widget? suffixWidget;
   final Color? changeBackground;
   final EdgeInsetsGeometry? padding;
 
-  const InformationUserGroupWidget(this.contentWidget,
+  const GeneralComponent(this.contentWidget,
       {this.prefixWidget,
       this.suffixWidget,
       this.changeBackground,
