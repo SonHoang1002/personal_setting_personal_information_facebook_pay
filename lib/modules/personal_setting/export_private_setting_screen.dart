@@ -1,0 +1,1 @@
+export './screen/on_board_setting_page.dart';
