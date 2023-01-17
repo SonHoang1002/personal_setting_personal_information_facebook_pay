@@ -5,19 +5,17 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:personal_setting_personal_information_facebook_pay/commons/constants/personal_setting_common.dart';
 import 'package:personal_setting_personal_information_facebook_pay/commons/widgets/general_component.dart';
 import 'package:personal_setting_personal_information_facebook_pay/commons/widgets/title_description_and_content_list.dart';
-import 'package:personal_setting_personal_information_facebook_pay/modules/personal_setting/export_personal_setting_screen.dart';
+import 'package:personal_setting_personal_information_facebook_pay/modules/personal_setting/screen/sub_modules_on_board/sub_module_personal_setting/private_rule_settings._page.dart';
 
-class OnBoardSettingPage extends StatefulWidget {
+class PersonalSettingsPage extends StatefulWidget {
   @override
-  State<OnBoardSettingPage> createState() => _OnBoardSettingPageState();
+  State<PersonalSettingsPage> createState() => _PersonalSettingsPageState();
 }
 
-class _OnBoardSettingPageState extends State<OnBoardSettingPage> {
+class _PersonalSettingsPageState extends State<PersonalSettingsPage> {
   late double width = 0;
-
   late double height = 0;
 
-  int _selectedIndex = 0;
   String _selectedBottomNavigator = "Trang chủ";
 
   @override
@@ -84,189 +82,98 @@ class _OnBoardSettingPageState extends State<OnBoardSettingPage> {
                   child: ListView(
                     padding: EdgeInsets.zero,
                     children: [
-                      // personal page title
-                      Row(
-                        children: [
-                          Text(
-                            OnBoardingSettingCommon.PERSONAL_PAGE_TITLE,
-                            style: const TextStyle(
-                                color: Colors.white,
-                                fontSize: 19,
-                                fontWeight: FontWeight.bold),
-                          ),
-                        ],
-                      ),
-                      // personal page description
-                      Wrap(
-                        children: [
-                          Text(
-                            OnBoardingSettingCommon.PERSONAL_PAGE_DESCRIPTION,
-                            style: const TextStyle(
-                              color: Colors.grey,
-                              fontSize: 15,
-                            ),
-                          ),
-                        ],
-                      ),
-                      // user example
-                      GestureDetector(
-                        onTap: () {
-                          Navigator.of(context).push(MaterialPageRoute(
-                              builder: (_) => PersonalSettingsPage()));
-                        },
-                        child: Container(
-                          margin: EdgeInsets.only(top: 10),
-                          child: GeneralComponent(
-                            [
-                              Text(OnBoardingSettingCommon.USER_EXAMPLE[1],
-                                  style: TextStyle(
-                                      fontSize: 15,
-                                      fontWeight: FontWeight.bold,
-                                      color: Colors.white)),
-                              Text(OnBoardingSettingCommon.USER_EXAMPLE[2],
-                                  style: TextStyle(
-                                      fontSize: 15, color: Colors.grey)),
-                            ],
-                            prefixWidget: Container(
-                                height: 40,
-                                width: 40,
-                                margin: EdgeInsets.only(right: 10),
-                                decoration: BoxDecoration(
-                                    borderRadius:
-                                        BorderRadius.all(Radius.circular(20))),
-                                child: Image.asset(
-                                    OnBoardingSettingCommon.USER_EXAMPLE[0])),
-                            changeBackground: Colors.transparent,
-                            padding: EdgeInsets.zero,
-                          ),
-                        ),
-                      ),
-                      // divider
-                      setDivider(top: 10, bottom: 10),
-                      // account
+                      // private rules
                       TitleDescriptionAndContentListWidget(
-                        title: OnBoardingSettingCommon.ACCOUNT_TITLE,
-                        subTitle: OnBoardingSettingCommon.ACCOUNT_DESCRIPTION,
-                        listView: Container(
-                          height: 380,
-                          child: ListView.builder(
-                              padding: EdgeInsets.zero,
-                              itemCount: OnBoardingSettingCommon
-                                  .ACCOUNT_INFORMATION_LIST.length,
-                              itemBuilder: ((context, index) {
-                                return GestureDetector(
-                                  onTap: () {
-                                    // final list = OnBoardingSettingCommon
-                                    //     .ACCOUNT_INFORMATION_LIST;
-                                    // if(list[index][0]==list[0][0]){
-
-                                    // }
-                                  },
-                                  child: GeneralComponent(
-                                    [
-                                      Text(
-                                          OnBoardingSettingCommon
-                                                  .ACCOUNT_INFORMATION_LIST[
-                                              index][1],
-                                          style: TextStyle(
-                                              fontSize: 15,
-                                              fontWeight: FontWeight.bold,
-                                              color: Colors.white)),
-                                      Text(
-                                          OnBoardingSettingCommon
-                                                  .ACCOUNT_INFORMATION_LIST[
-                                              index][2],
-                                          style: TextStyle(
-                                              fontSize: 15,
-                                              color: Colors.grey)),
-                                    ],
-                                    prefixWidget: Container(
-                                      height: 40,
-                                      width: 40,
-                                      padding: EdgeInsets.all(7),
-                                      margin: EdgeInsets.only(right: 10),
-                                      decoration: BoxDecoration(
-                                          borderRadius: BorderRadius.all(
-                                              Radius.circular(20))),
-                                      child: SvgPicture.asset(
-                                        OnBoardingSettingCommon
-                                            .ACCOUNT_INFORMATION_LIST[index][0],
-                                        color: Colors.white,
+                          title: PersonalSettingsCommon.PRIVATE_TITLE,
+                          subTitle: PersonalSettingsCommon.PRIVATE_DESCRIPTION,
+                          listView: Container(
+                            height: 355,
+                            child: ListView.builder(
+                                padding: EdgeInsets.zero,
+                                itemCount: PersonalSettingsCommon
+                                    .PRIVATE_INFORMATION_LIST.length,
+                                itemBuilder: ((context, index) {
+                                  return GestureDetector(
+                                    onTap: () {
+                                      // final list = PersonalSettingsCommon
+                                      //     .PRIVATE_INFORMATION_LIST;
+                                      // switch (PersonalSettingsCommon
+                                      //     .PRIVATE_INFORMATION_LIST[index]
+                                      //     .title) {
+                                      //   case "Quyền riêng tư":
+                                      //   case "Trang cá nhân và gắn thẻ":
+                                        
+                                      // }
+                                      // for (int i = 0;
+                                      //     i <
+                                      //         PersonalSettingsCommon
+                                      //             .PRIVATE_INFORMATION_LIST
+                                      //             .length;
+                                      //     i++) {
+                                      //   if (PersonalSettingsCommon
+                                      //           .PRIVATE_INFORMATION_LIST[index]
+                                      //           .title ==
+                                      //       PersonalSettingsCommon
+                                      //           .PRIVATE_INFORMATION_LIST[i]
+                                      //           .title) {
+                                      //     Navigator.of(context).push(
+                                      //         MaterialPageRoute(
+                                      //             builder: (_) =>
+                                      //                 PrivateRulesSettingPage()));
+                                      //     return;
+                                      //   }
+                                      // }
+                                    },
+                                    child: GeneralComponent(
+                                      [
+                                        Text(
+                                            PersonalSettingsCommon
+                                                .PRIVATE_INFORMATION_LIST[index]
+                                                .title,
+                                            style: TextStyle(
+                                                fontSize: 15,
+                                                fontWeight: FontWeight.bold,
+                                                color: Colors.white)),
+                                        Text(
+                                            PersonalSettingsCommon
+                                                .PRIVATE_INFORMATION_LIST[index]
+                                                .description,
+                                            style: TextStyle(
+                                                fontSize: 15,
+                                                color: Colors.grey)),
+                                      ],
+                                      prefixWidget: Container(
+                                        height: 40,
+                                        width: 40,
+                                        padding: EdgeInsets.all(7),
+                                        margin: EdgeInsets.only(right: 10),
+                                        decoration: BoxDecoration(
+                                            borderRadius: BorderRadius.all(
+                                                Radius.circular(20))),
+                                        child: SvgPicture.asset(
+                                          PersonalSettingsCommon
+                                              .PRIVATE_INFORMATION_LIST[index]
+                                              .pathSvg,
+                                          color: Colors.white,
+                                        ),
                                       ),
+                                      changeBackground: Colors.transparent,
+                                      padding: EdgeInsets.fromLTRB(0, 5, 0, 7),
                                     ),
-                                    changeBackground: Colors.transparent,
-                                    padding: EdgeInsets.fromLTRB(0, 5, 0, 7),
-                                  ),
-                                );
-                              })),
-                        ),
-                      ),
-                      // security
+                                  );
+                                })),
+                          )),
+                      // notification
                       TitleDescriptionAndContentListWidget(
-                        title: OnBoardingSettingCommon.SECURITY_TITLE,
-                        subTitle: OnBoardingSettingCommon.SECURITY_DESCRIPTION,
-                        listView: Container(
-                          height: 390,
-                          child: ListView.builder(
-                              padding: EdgeInsets.zero,
-                              itemCount: OnBoardingSettingCommon
-                                  .SECURITY_INFORMATION_LIST.length,
-                              itemBuilder: ((context, index) {
-                                return GestureDetector(
-                                  onTap: () {
-                                    ////
-                                  },
-                                  child: GeneralComponent(
-                                    [
-                                      Text(
-                                          OnBoardingSettingCommon
-                                                  .SECURITY_INFORMATION_LIST[
-                                              index][1],
-                                          style: TextStyle(
-                                              fontSize: 15,
-                                              fontWeight: FontWeight.bold,
-                                              color: Colors.white)),
-                                      Text(
-                                          OnBoardingSettingCommon
-                                                  .SECURITY_INFORMATION_LIST[
-                                              index][2],
-                                          style: TextStyle(
-                                              fontSize: 15,
-                                              color: Colors.grey)),
-                                    ],
-                                    prefixWidget: Container(
-                                      height: 40,
-                                      width: 40,
-                                      padding: EdgeInsets.all(7),
-                                      margin: EdgeInsets.only(right: 10),
-                                      decoration: BoxDecoration(
-                                          borderRadius: BorderRadius.all(
-                                              Radius.circular(20))),
-                                      child: SvgPicture.asset(
-                                        OnBoardingSettingCommon
-                                                .SECURITY_INFORMATION_LIST[
-                                            index][0],
-                                        color: Colors.white,
-                                      ),
-                                    ),
-                                    changeBackground: Colors.transparent,
-                                    padding: EdgeInsets.fromLTRB(0, 5, 0, 7),
-                                  ),
-                                );
-                              })),
-                        ),
-                      ),
-                      //  advertisement
-                      TitleDescriptionAndContentListWidget(
-                        title: OnBoardingSettingCommon.ADVERTISEMENT_TITLE,
+                        title: PersonalSettingsCommon.NOTIFICATION_TITLE,
                         subTitle:
-                            OnBoardingSettingCommon.ADVERTISEMENT_DESCRIPTION,
+                            PersonalSettingsCommon.NOTIFICATION_DESCRIPTION,
                         listView: Container(
-                          height: 90,
+                          height: 340,
                           child: ListView.builder(
                               padding: EdgeInsets.zero,
-                              itemCount: OnBoardingSettingCommon
-                                  .ADVERTISEMENT_INFORMATION_LIST.length,
+                              itemCount: PersonalSettingsCommon
+                                  .NOTIFICATION_INFORMATION_LIST.length,
                               itemBuilder: ((context, index) {
                                 return GestureDetector(
                                   onTap: () {
@@ -275,16 +182,16 @@ class _OnBoardSettingPageState extends State<OnBoardSettingPage> {
                                   child: GeneralComponent(
                                     [
                                       Text(
-                                          OnBoardingSettingCommon
-                                                  .ADVERTISEMENT_INFORMATION_LIST[
+                                          PersonalSettingsCommon
+                                                  .NOTIFICATION_INFORMATION_LIST[
                                               index][1],
                                           style: TextStyle(
                                               fontSize: 15,
                                               fontWeight: FontWeight.bold,
                                               color: Colors.white)),
                                       Text(
-                                          OnBoardingSettingCommon
-                                                  .ADVERTISEMENT_INFORMATION_LIST[
+                                          PersonalSettingsCommon
+                                                  .NOTIFICATION_INFORMATION_LIST[
                                               index][2],
                                           style: TextStyle(
                                               fontSize: 15,
@@ -299,8 +206,8 @@ class _OnBoardSettingPageState extends State<OnBoardSettingPage> {
                                           borderRadius: BorderRadius.all(
                                               Radius.circular(20))),
                                       child: SvgPicture.asset(
-                                        OnBoardingSettingCommon
-                                                .SECURITY_INFORMATION_LIST[
+                                        PersonalSettingsCommon
+                                                .NOTIFICATION_INFORMATION_LIST[
                                             index][0],
                                         color: Colors.white,
                                       ),
@@ -312,77 +219,230 @@ class _OnBoardSettingPageState extends State<OnBoardSettingPage> {
                               })),
                         ),
                       ),
-                      // meta
-                      Row(
-                        children: [
-                          Text(
-                            "Meta",
-                            style: const TextStyle(
-                                color: Colors.white,
-                                fontSize: 19,
-                                fontWeight: FontWeight.bold),
-                          ),
-                        ],
+                      // your information in facebook
+                      TitleDescriptionAndContentListWidget(
+                        title: PersonalSettingsCommon
+                            .YOUR_INFORMATION_IN_FACEBOOK_TITLE,
+                        subTitle: PersonalSettingsCommon
+                            .YOUR_INFORMATION_IN_FACEBOOK_DESCRIPTION,
+                        listView: Container(
+                          height: 290,
+                          child: ListView.builder(
+                              padding: EdgeInsets.zero,
+                              itemCount: PersonalSettingsCommon
+                                  .YOUR_INFORMATION_IN_FACEBOOK_INFORMATION_LIST
+                                  .length,
+                              itemBuilder: ((context, index) {
+                                return GestureDetector(
+                                  onTap: () {
+                                    ////
+                                  },
+                                  child: GeneralComponent(
+                                    [
+                                      Text(
+                                          PersonalSettingsCommon
+                                                  .YOUR_INFORMATION_IN_FACEBOOK_INFORMATION_LIST[
+                                              index][1],
+                                          style: TextStyle(
+                                              fontSize: 15,
+                                              fontWeight: FontWeight.bold,
+                                              color: Colors.white)),
+                                      Text(
+                                          PersonalSettingsCommon
+                                                  .YOUR_INFORMATION_IN_FACEBOOK_INFORMATION_LIST[
+                                              index][2],
+                                          style: TextStyle(
+                                              fontSize: 15,
+                                              color: Colors.grey)),
+                                    ],
+                                    prefixWidget: Container(
+                                      height: 40,
+                                      width: 40,
+                                      padding: EdgeInsets.all(7),
+                                      margin: EdgeInsets.only(right: 10),
+                                      decoration: BoxDecoration(
+                                          borderRadius: BorderRadius.all(
+                                              Radius.circular(20))),
+                                      child: SvgPicture.asset(
+                                        PersonalSettingsCommon
+                                                .YOUR_INFORMATION_IN_FACEBOOK_INFORMATION_LIST[
+                                            index][0],
+                                        color: Colors.white,
+                                      ),
+                                    ),
+                                    changeBackground: Colors.transparent,
+                                    padding: EdgeInsets.fromLTRB(0, 5, 0, 7),
+                                  ),
+                                );
+                              })),
+                        ),
                       ),
-                      SizedBox(
-                        height: 10,
+                      //  file and contact
+                      TitleDescriptionAndContentListWidget(
+                        title: PersonalSettingsCommon.FEED_SETTINGS_TITLE,
+                        subTitle:
+                            PersonalSettingsCommon.FEED_SETTINGS_DESCRIPTION,
+                        listView: Container(
+                          height: 120,
+                          child: ListView.builder(
+                              padding: EdgeInsets.zero,
+                              itemCount: PersonalSettingsCommon
+                                  .FEED_SETTINGS_INFORMATION_LIST.length,
+                              itemBuilder: ((context, index) {
+                                return GestureDetector(
+                                  onTap: () {
+                                    ////
+                                  },
+                                  child: GeneralComponent(
+                                    [
+                                      Text(
+                                          PersonalSettingsCommon
+                                                  .FEED_SETTINGS_INFORMATION_LIST[
+                                              index][1],
+                                          style: TextStyle(
+                                              fontSize: 15,
+                                              fontWeight: FontWeight.bold,
+                                              color: Colors.white)),
+                                      Text(
+                                          PersonalSettingsCommon
+                                                  .FEED_SETTINGS_INFORMATION_LIST[
+                                              index][2],
+                                          style: TextStyle(
+                                              fontSize: 15,
+                                              color: Colors.grey)),
+                                    ],
+                                    prefixWidget: Container(
+                                      height: 40,
+                                      width: 40,
+                                      padding: EdgeInsets.all(7),
+                                      margin: EdgeInsets.only(right: 10),
+                                      decoration: BoxDecoration(
+                                          borderRadius: BorderRadius.all(
+                                              Radius.circular(20))),
+                                      child: SvgPicture.asset(
+                                        PersonalSettingsCommon
+                                                .FEED_SETTINGS_INFORMATION_LIST[
+                                            index][0],
+                                        color: Colors.white,
+                                      ),
+                                    ),
+                                    changeBackground: Colors.transparent,
+                                    padding: EdgeInsets.fromLTRB(0, 5, 0, 7),
+                                  ),
+                                );
+                              })),
+                        ),
                       ),
-                      // meta description
-                      Row(
-                        children: [
-                          Text(
-                            OnBoardingSettingCommon.META_DESCRIPTION[0],
-                            style: const TextStyle(
-                                color: Colors.blue,
-                                fontSize: 15,
-                                fontWeight: FontWeight.bold),
-                          ),
-                        ],
+                      //  file and contact
+                      TitleDescriptionAndContentListWidget(
+                        title: PersonalSettingsCommon.STORY_TITLE,
+                        subTitle: PersonalSettingsCommon.STORY_DESCRIPTION,
+                        listView: Container(
+                          height: 70,
+                          child: ListView.builder(
+                              padding: EdgeInsets.zero,
+                              itemCount: PersonalSettingsCommon
+                                  .STORY_INFORMATION_LIST.length,
+                              itemBuilder: ((context, index) {
+                                return GestureDetector(
+                                  onTap: () {
+                                    ////
+                                  },
+                                  child: GeneralComponent(
+                                    [
+                                      Text(
+                                          PersonalSettingsCommon
+                                              .STORY_INFORMATION_LIST[index][1],
+                                          style: TextStyle(
+                                              fontSize: 15,
+                                              fontWeight: FontWeight.bold,
+                                              color: Colors.white)),
+                                      Text(
+                                          PersonalSettingsCommon
+                                              .STORY_INFORMATION_LIST[index][2],
+                                          style: TextStyle(
+                                              fontSize: 15,
+                                              color: Colors.grey)),
+                                    ],
+                                    prefixWidget: Container(
+                                      height: 40,
+                                      width: 40,
+                                      padding: EdgeInsets.all(7),
+                                      margin: EdgeInsets.only(right: 10),
+                                      decoration: BoxDecoration(
+                                          borderRadius: BorderRadius.all(
+                                              Radius.circular(20))),
+                                      child: SvgPicture.asset(
+                                        PersonalSettingsCommon
+                                            .STORY_INFORMATION_LIST[index][0],
+                                        color: Colors.white,
+                                      ),
+                                    ),
+                                    changeBackground: Colors.transparent,
+                                    padding: EdgeInsets.fromLTRB(0, 5, 0, 7),
+                                  ),
+                                );
+                              })),
+                        ),
                       ),
-                      Wrap(
-                        children: [
-                          Text(
-                            OnBoardingSettingCommon.META_DESCRIPTION[1],
-                            style: const TextStyle(
-                                color: Colors.grey,
-                                fontSize: 15,
-                                fontWeight: FontWeight.bold),
-                          ),
-                        ],
+                      // SHORT CUT
+                      TitleDescriptionAndContentListWidget(
+                        title: PersonalSettingsCommon.SHORTCUT_TITLE,
+                        subTitle: PersonalSettingsCommon.SHORTCUT_DESCRIPTION,
+                        listView: Container(
+                          height: 70,
+                          child: ListView.builder(
+                              padding: EdgeInsets.zero,
+                              itemCount: PersonalSettingsCommon
+                                  .SHORTCUT_INFORMATION_LIST.length,
+                              itemBuilder: ((context, index) {
+                                return GestureDetector(
+                                  onTap: () {
+                                    ////
+                                  },
+                                  child: GeneralComponent(
+                                    [
+                                      Text(
+                                          PersonalSettingsCommon
+                                                  .SHORTCUT_INFORMATION_LIST[
+                                              index][1],
+                                          style: TextStyle(
+                                              fontSize: 15,
+                                              fontWeight: FontWeight.bold,
+                                              color: Colors.white)),
+                                      Text(
+                                          PersonalSettingsCommon
+                                                  .SHORTCUT_INFORMATION_LIST[
+                                              index][2],
+                                          style: TextStyle(
+                                              fontSize: 15,
+                                              color: Colors.grey)),
+                                    ],
+                                    prefixWidget: Container(
+                                      height: 40,
+                                      width: 40,
+                                      padding: EdgeInsets.all(7),
+                                      margin: EdgeInsets.only(right: 10),
+                                      decoration: BoxDecoration(
+                                          borderRadius: BorderRadius.all(
+                                              Radius.circular(20))),
+                                      child: SvgPicture.asset(
+                                        PersonalSettingsCommon
+                                                .SHORTCUT_INFORMATION_LIST[
+                                            index][0],
+                                        color: Colors.white,
+                                      ),
+                                    ),
+                                    changeBackground: Colors.transparent,
+                                    padding: EdgeInsets.fromLTRB(0, 5, 0, 7),
+                                  ),
+                                );
+                              })),
+                        ),
                       ),
-                      setDivider(top: 10, bottom: 10),
-                      // privacy title
-                      Row(
-                        children: [
-                          Text(
-                            OnBoardingSettingCommon.POLICY_TITLE,
-                            style: const TextStyle(
-                                color: Colors.white,
-                                fontSize: 19,
-                                fontWeight: FontWeight.bold),
-                          ),
-                        ],
-                      ),
-                      // policy content list
                       Container(
-                        height: 110,
-                        child: ListView.builder(
-                            padding: EdgeInsets.zero,
-                            itemCount:
-                                OnBoardingSettingCommon.POLICY_SUBTITLE.length,
-                            itemBuilder: ((context, index) {
-                              return Container(
-                                padding: EdgeInsets.symmetric(vertical: 5),
-                                child: Text(
-                                  OnBoardingSettingCommon
-                                      .POLICY_SUBTITLE[index],
-                                  style: TextStyle(
-                                      color: Colors.white, fontSize: 15),
-                                ),
-                              );
-                            })),
-                      ),
-                      setDivider(top: 10, bottom: 60)
+                        height: 50,
+                      )
                     ],
                   ),
                 ),
@@ -476,47 +536,3 @@ class _OnBoardSettingPageState extends State<OnBoardSettingPage> {
     );
   }
 }
-
-// Container(
-//   color: Colors.grey[800],
-//   height: 50,
-//   child: ListView.builder(
-//       scrollDirection: Axis.horizontal,
-//       itemCount:
-//           SettingCommon.BOTTOM_NAVIGATOR_ITEM_LIST.length,
-//       itemBuilder: ((context, index) {
-//         return ;
-//       })),
-// )
-// bottomNavigationBar: Container(
-//         height: 65,
-//         padding: EdgeInsets.zero,
-//         child: BottomNavigationBar(
-//             selectedIconTheme: IconThemeData(color: Colors.red, size: 40),
-//             currentIndex: _selectedIndex,
-//             onTap: (value) {
-//               setState(() {
-//                 _selectedIndex = value;
-//               });
-//             },
-//             backgroundColor: Colors.blueAccent,
-//             // fixedColor: Colors.blue,
-//             selectedItemColor: Colors.blue,
-//             items: SettingCommon.BOTTOM_NAVIGATOR_ITEM_LIST.map((item) {
-//               return BottomNavigationBarItem(
-//                   icon: item[0] is IconData
-//                       ? Icon(
-//                           item[0],
-//                           color: Colors.white,
-//                           size: 13,
-//                         )
-//                       : Container(
-//                           height: 20,
-//                           width: 20,
-//                           decoration: BoxDecoration(
-//                               borderRadius:
-//                                   BorderRadius.all(Radius.circular(10))),
-//                           child: Image.asset(item[0],),
-//                         ),
-//                   label: item[1]);
-//             }).toList()),)

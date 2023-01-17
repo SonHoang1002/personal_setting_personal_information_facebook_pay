@@ -6,12 +6,13 @@ import 'package:personal_setting_personal_information_facebook_pay/commons/const
 import 'package:personal_setting_personal_information_facebook_pay/commons/widgets/general_component.dart';
 import 'package:personal_setting_personal_information_facebook_pay/commons/widgets/title_description_and_content_list.dart';
 
-class PersonalSettingsPage extends StatefulWidget {
+class PrivateRulesSettingPage extends StatefulWidget {
   @override
-  State<PersonalSettingsPage> createState() => _PersonalSettingsPageState();
+  State<PrivateRulesSettingPage> createState() =>
+      _PrivateRulesSettingPageState();
 }
 
-class _PersonalSettingsPageState extends State<PersonalSettingsPage> {
+class _PrivateRulesSettingPageState extends State<PrivateRulesSettingPage> {
   late double width = 0;
   late double height = 0;
 
@@ -23,7 +24,7 @@ class _PersonalSettingsPageState extends State<PersonalSettingsPage> {
     width = size.width;
     height = size.height;
     return Scaffold(
-      backgroundColor: Colors.grey[900],
+      backgroundColor: Colors.red[900],
       body: GestureDetector(
         onTap: (() {
           FocusManager.instance.primaryFocus!.unfocus();
@@ -47,30 +48,15 @@ class _PersonalSettingsPageState extends State<PersonalSettingsPage> {
                     ),
                   ),
                   Expanded(
-                    child: SizedBox(
-                      height: 35,
-                      child: TextFormField(
-                        onChanged: ((value) {}),
-                        textAlign: TextAlign.left,
-                        style: const TextStyle(color: Colors.white),
-                        decoration: InputDecoration(
-                            prefixIcon: Icon(
-                              FontAwesomeIcons.search,
-                              color: Colors.grey,
-                              size: 13,
-                            ),
-                            fillColor: Colors.grey[800],
-                            filled: true,
-                            contentPadding: EdgeInsets.fromLTRB(0, 5, 0, 0),
-                            hintText: SettingCommon.PLACE_HOLDER_SEARCH,
-                            hintStyle:
-                                TextStyle(color: Colors.white, fontSize: 14),
-                            border: OutlineInputBorder(
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(17)))),
-                      ),
+                      child: Center(
+                    child: Text(
+                      PrivateRulesSettingCommon.PRIVATE_RULES_APPBAR_TITLE,
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold),
                     ),
-                  ),
+                  )),
                 ]),
               ),
               // main content
@@ -81,61 +67,7 @@ class _PersonalSettingsPageState extends State<PersonalSettingsPage> {
                   child: ListView(
                     padding: EdgeInsets.zero,
                     children: [
-                      // private rules
-                      TitleDescriptionAndContentListWidget(
-                        title: PersonalSettingsCommon.PRIVATE_TITLE,
-                        subTitle: PersonalSettingsCommon.PRIVATE_DESCRIPTION,
-                        contentList:
-                            PersonalSettingsCommon.PRIVATE_INFORMATION_LIST,
-                        height: 355,
-                      ),
-                      // notification
-                      TitleDescriptionAndContentListWidget(
-                        title: PersonalSettingsCommon.NOTIFICATION_TITLE,
-                        subTitle:
-                            PersonalSettingsCommon.NOTIFICATION_DESCRIPTION,
-                        contentList: PersonalSettingsCommon
-                            .NOTIFICATION_INFORMATION_LIST,
-                        height: 340,
-                      ),
-                      // your information in facebook
-                      TitleDescriptionAndContentListWidget(
-                        title: PersonalSettingsCommon
-                            .YOUR_INFORMATION_IN_FACEBOOK_TITLE,
-                        subTitle: PersonalSettingsCommon
-                            .YOUR_INFORMATION_IN_FACEBOOK_DESCRIPTION,
-                        contentList: PersonalSettingsCommon
-                            .YOUR_INFORMATION_IN_FACEBOOK_INFORMATION_LIST,
-                        height: 290,
-                      ),
-                      //  file and contact
-                      TitleDescriptionAndContentListWidget(
-                        title: PersonalSettingsCommon.FEED_SETTINGS_TITLE,
-                        subTitle:
-                            PersonalSettingsCommon.FEED_SETTINGS_DESCRIPTION,
-                        contentList: PersonalSettingsCommon
-                            .FEED_SETTINGS_INFORMATION_LIST,
-                        height: 120,
-                      ),
-                      //  file and contact
-                      TitleDescriptionAndContentListWidget(
-                        title: PersonalSettingsCommon.STORY_TITLE,
-                        subTitle:
-                            PersonalSettingsCommon.STORY_DESCRIPTION,
-                        contentList: PersonalSettingsCommon
-                            .STORY_INFORMATION_LIST,
-                        height: 70,
-                      ),
-                      TitleDescriptionAndContentListWidget(
-                        title: PersonalSettingsCommon.SHORTCUT_TITLE,
-                        subTitle:
-                            PersonalSettingsCommon.SHORTCUT_DESCRIPTION,
-                        contentList: PersonalSettingsCommon
-                            .SHORTCUT_INFORMATION_LIST,
-                        height: 70,
-                      ),
-                      Container(height: 50,)
-                    ],
+                       ],
                   ),
                 ),
               ),

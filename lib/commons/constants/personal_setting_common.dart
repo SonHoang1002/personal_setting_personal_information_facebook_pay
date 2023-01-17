@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:personal_setting_personal_information_facebook_pay/modules/personal_setting/models/personal_setting_function_model.dart';
 
 class SettingCommon {
   static const IconData BACK_ICON_DATA = CupertinoIcons.back;
@@ -134,32 +135,23 @@ class PersonalSettingsCommon {
   static const PRIVATE_TITLE = "Quyền riêng tư";
   static const PRIVATE_DESCRIPTION =
       "Kiểm soát người nhìn thấy hoạt động của bạn trên Facebook và cách chúng tôi dùng dữ liệu để cá nhân hóa trải nghiệm";
-  static List<List<dynamic>> PRIVATE_INFORMATION_LIST = [
-    [
-      SettingCommon.PATH_ICON + "bell_icon.svg",
-      "Quyền riêng tư",
-      "Kiểm soát ai có thể kết bạn, liên hệ và xem trang cá nhân của bạn"
-    ],
-    [
-      SettingCommon.PATH_ICON + "bell_icon.svg",
-      "Trang cá nhân và gắn thẻ",
-      "Quyết định người có thể tương tác với trang cá nhân và các bài viết của bạn trên Facebook"
-    ],
-    [
-      SettingCommon.PATH_ICON + "bell_icon.svg",
-      "Bài viết công khai",
-      "Quản lý những ai có thể theo dõi trang cá nhân và bình luận về bài viết công khai của bạn"
-    ],
-    [
-      SettingCommon.PATH_ICON + "bell_icon.svg",
-      "Chặn",
-      "Xem lại những người mà bạn đã chặn trước đó"
-    ],
-    [
-      SettingCommon.PATH_ICON + "bell_icon.svg",
-      "Trạng thái hoạt động",
-      "Hiển thị khi bạn hoạt động"
-    ],
+  static List<PersonalSettingFunctionModel> PRIVATE_INFORMATION_LIST = [
+    PersonalSettingFunctionModel(
+        SettingCommon.PATH_ICON + "bell_icon.svg",
+        "Quyền riêng tư",
+        "Kiểm soát ai có thể kết bạn, liên hệ và xem trang cá nhân của bạn"),
+    PersonalSettingFunctionModel(
+        SettingCommon.PATH_ICON + "bell_icon.svg",
+        "Trang cá nhân và gắn thẻ",
+        "Quyết định người có thể tương tác với trang cá nhân và các bài viết của bạn trên Facebook"),
+    PersonalSettingFunctionModel(
+        SettingCommon.PATH_ICON + "bell_icon.svg",
+        "Bài viết công khai",
+        "Quản lý những ai có thể theo dõi trang cá nhân và bình luận về bài viết công khai của bạn"),
+    PersonalSettingFunctionModel(SettingCommon.PATH_ICON + "bell_icon.svg",
+        "Chặn", "Xem lại những người mà bạn đã chặn trước đó"),
+    PersonalSettingFunctionModel(SettingCommon.PATH_ICON + "bell_icon.svg",
+        "Trạng thái hoạt động", "Hiển thị khi bạn hoạt động"),
   ];
 
   // notification
@@ -170,7 +162,7 @@ class PersonalSettingsCommon {
     [
       SettingCommon.PATH_ICON + "bell_icon.svg",
       "Cài đặt thông báo",
-      "CHọn thông báo bạn muốn nhận và nới nhận thông báo"
+      "Chọn thông báo bạn muốn nhận và nới nhận thông báo"
     ],
     [
       SettingCommon.PATH_ICON + "bell_icon.svg",
@@ -288,5 +280,27 @@ class PersonalSettingsCommon {
       "Quyết định xem Facebook có thể thêm lối tắt nào vào thanh lối tắt của bạn."
     ],
   ];
- 
+}
+
+class PrivateRulesSettingCommon {
+  static const PRIVATE_RULES_APPBAR_TITLE = "Cài đặt quyền riêng tư";
+  static const List<String> SHORTCUT_FOR_PRIVATE_RULES = [
+    "Lối tắt quyền riêng tư",
+    "Kiểm tra một vài cài đặt quan trọng",
+    "Hãy xem lại nhanh một số cài đặt quan trọng để đảm bảo bạn đang chia sẻ với những người mình muốn"
+  ];
+  static const List<String> MANAGE_PERSONAL_PAGE = [
+    "Quản lý trang cá nhân",
+    "Đi đến trang cá nhân để thay đổi quyền riêng tư của thông tin trên trang cá nhân, ví dụ như ai mới được xem ngày sinh hoặc các mối quan hệ của bạn",
+  ];
+  static const List<String> SEARCH_MORE_ABOUT_SIMPLE_PRIVATE_RULES = [
+    "Tìm hiểu thêm với Quyền riêng tư cơ bản",
+    "Xem bản hướng dẫn mang tính tương tác này để được giải đáp các thắc mắc phổ biến"
+  ];
+
+  static const List<String> ACTIVITY_OF_YOU = [
+    "Hoạt động của bạn",
+    "Ai có thẻ xem bài viết của bạn trong tương lai ?",
+    "Bạn bè or Công khai ..."
+  ];
 }

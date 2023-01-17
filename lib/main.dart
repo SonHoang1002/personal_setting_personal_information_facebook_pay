@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:personal_setting_personal_information_facebook_pay/tests/counter_provider.dart';
 import 'package:provider/provider.dart';
 
-import 'modules/personal_setting/export_private_setting_screen.dart';
+import 'modules/personal_setting/export_personal_setting_screen.dart';
 
 void main() {
   Provider.debugCheckInvalidValueType = null;
@@ -27,10 +27,11 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
 
-      // setting 
+      // setting
+      // home: PersonalSettingsPage(),
       home: OnBoardSettingPage(),
       // test
-      // setting 
+      // setting
       // home: TestScreen(),
     );
   }
