@@ -1,4 +1,5 @@
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class CounterProvider with ChangeNotifier {
   int counter = 0;
@@ -9,7 +10,7 @@ class CounterProvider with ChangeNotifier {
 
   decreaseCounter(int value) {
     counter -= value;
-    notifyListeners();
+    // notifyListeners();
   }
 
   int get getCounter => counter;

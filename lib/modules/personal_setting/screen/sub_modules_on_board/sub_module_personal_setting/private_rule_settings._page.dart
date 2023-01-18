@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:personal_setting_personal_information_facebook_pay/commons/constants/personal_setting_common.dart';
-import 'package:personal_setting_personal_information_facebook_pay/commons/widgets/general_component.dart';
+import 'package:personal_setting_personal_information_facebook_pay/commons/widgets/information_component_widget.dart';
 import 'package:personal_setting_personal_information_facebook_pay/commons/widgets/title_description_and_content_list.dart';
 
 class PrivateRulesSettingPage extends StatefulWidget {

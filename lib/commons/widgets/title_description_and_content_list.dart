@@ -4,7 +4,7 @@ import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:personal_setting_personal_information_facebook_pay/commons/constants/personal_setting_common.dart';
-import 'package:personal_setting_personal_information_facebook_pay/commons/widgets/general_component.dart';
+import 'package:personal_setting_personal_information_facebook_pay/commons/widgets/information_component_widget.dart';
 import 'package:personal_setting_personal_information_facebook_pay/modules/personal_setting/screen/on_board_setting_page.dart';
 import 'package:personal_setting_personal_information_facebook_pay/modules/personal_setting/screen/sub_modules_on_board/sub_module_personal_setting/private_rule_settings._page.dart';
 
