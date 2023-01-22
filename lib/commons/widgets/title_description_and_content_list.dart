@@ -5,21 +5,19 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:personal_setting_personal_information_facebook_pay/commons/constants/personal_setting_common.dart';
 import 'package:personal_setting_personal_information_facebook_pay/commons/widgets/information_component_widget.dart';
-import 'package:personal_setting_personal_information_facebook_pay/modules/personal_setting/screen/on_board_setting_page.dart';
-import 'package:personal_setting_personal_information_facebook_pay/modules/personal_setting/screen/sub_modules_on_board/sub_module_personal_setting/private_rule_settings._page.dart';
 
 class TitleDescriptionAndContentListWidget extends StatelessWidget {
   final String title;
-  final String subTitle;
- final Widget listView;
+  final String? subTitle;
+  final Widget? listView;
   // final double height;
 
   const TitleDescriptionAndContentListWidget({
     super.key,
     required this.title,
-    required this.subTitle,
+    this.subTitle,
     // required this.height,
-    required this.listView,
+    this.listView,
   });
 
   @override
@@ -27,39 +25,46 @@ class TitleDescriptionAndContentListWidget extends StatelessWidget {
     return Column(
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
-        Row(
-          children: [
-            Text(
-              title,
-              style: const TextStyle(
-                  color: Colors.white,
-                  fontSize: 19,
-                  fontWeight: FontWeight.bold),
-            ),
-          ],
-        ),
-        // account  description
-        Container(
-          alignment: Alignment.centerLeft,
-          child: Wrap(
-            textDirection: TextDirection.ltr,
+        Padding(
+          padding: const EdgeInsets.symmetric(vertical: 0, horizontal: 10),
+          child: Column(
             children: [
-              Text(
-                subTitle,
-                textAlign: TextAlign.left,
-                style: const TextStyle(
-                  color: Colors.grey,
-                  fontSize: 15,
+              Row(
+                children: [
+                  Text(
+                    title,
+                    style: const TextStyle(
+                        color: Colors.white,
+                        fontSize: 19,
+                        fontWeight: FontWeight.bold),
+                  ),
+                ],
+              ),
+              // account  description
+              subTitle==null ? Container(): Container(
+                alignment: Alignment.centerLeft,
+                child: Wrap(
+                  textDirection: TextDirection.ltr,
+                  children: [
+                    Text(
+                      subTitle!,
+                      textAlign: TextAlign.left,
+                      style: const TextStyle(
+                        color: Colors.grey,
+                        fontSize: 15,
+                      ),
+                    ),
+                  ],
                 ),
               ),
+              const SizedBox(
+                height: 10,
+              ),
+              // account content list
+              listView!,
             ],
           ),
         ),
-        const SizedBox(
-          height: 10,
-        ),
-        // account content list
-        listView,
         // divider
         setDivider(bottom: 10),
       ],
@@ -67,9 +72,7 @@ class TitleDescriptionAndContentListWidget extends StatelessWidget {
   }
 }
 
-void pushToNewScreen(BuildContext context, Widget widgetClass) {
-  Navigator.of(context).push(MaterialPageRoute(builder: (_) => widgetClass));
-}
+
 
 Widget setDivider(
     {double? left = 0,

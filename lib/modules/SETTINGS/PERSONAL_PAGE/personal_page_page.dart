@@ -2,18 +2,16 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:personal_setting_personal_information_facebook_pay/commons/constants/personal_setting_common.dart';
+import 'package:personal_setting_personal_information_facebook_pay/commons/widgets/bottom_navigator_bar_widget.dart';
 import 'package:personal_setting_personal_information_facebook_pay/commons/widgets/information_component_widget.dart';
 import 'package:personal_setting_personal_information_facebook_pay/commons/widgets/title_description_and_content_list.dart';
-import 'package:personal_setting_personal_information_facebook_pay/modules/personal_setting/screen/sub_modules_on_board/sub_module_personal_setting/private_rule_settings._page.dart';
+import 'package:personal_setting_personal_information_facebook_pay/modules/SETTINGS/PERSONAL_PAGE/personal_page_common.dart';
+import 'package:personal_setting_personal_information_facebook_pay/modules/SETTINGS/PERSONAL_PAGE/sub_modules_1/private_rule_settings_modules/private_rule_settings_page.dart';
+import 'package:personal_setting_personal_information_facebook_pay/modules/SETTINGS/setting_commons/general_settings_common.dart';
 
-class PersonalSettingsPage extends StatefulWidget {
-  @override
-  State<PersonalSettingsPage> createState() => _PersonalSettingsPageState();
-}
-
-class _PersonalSettingsPageState extends State<PersonalSettingsPage> {
+class PersonalSettingsPage extends StatelessWidget {
   late double width = 0;
+
   late double height = 0;
 
   String _selectedBottomNavigator = "Trang chủ";
@@ -42,7 +40,7 @@ class _PersonalSettingsPageState extends State<PersonalSettingsPage> {
                     child: GestureDetector(
                       onTap: () => Navigator.of(context).pop(),
                       child: Icon(
-                        SettingCommon.BACK_ICON_DATA,
+                        SettingCommons.BACK_ICON_DATA,
                         color: Colors.white,
                       ),
                     ),
@@ -63,7 +61,8 @@ class _PersonalSettingsPageState extends State<PersonalSettingsPage> {
                             fillColor: Colors.grey[800],
                             filled: true,
                             contentPadding: EdgeInsets.fromLTRB(0, 5, 0, 0),
-                            hintText: SettingCommon.PLACE_HOLDER_SEARCH,
+                            hintText:
+                                SettingCommons.PLACE_HOLDER_SEARCH_APPBAR_TITLE,
                             hintStyle:
                                 TextStyle(color: Colors.white, fontSize: 14),
                             border: OutlineInputBorder(
@@ -77,67 +76,92 @@ class _PersonalSettingsPageState extends State<PersonalSettingsPage> {
               // main content
               Expanded(
                 child: Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 15),
+                  // padding: const EdgeInsets.symmetric(horizontal: 15),
                   color: Colors.grey[900],
                   child: ListView(
                     padding: EdgeInsets.zero,
                     children: [
                       // private rules
                       TitleDescriptionAndContentListWidget(
-                          title: PersonalSettingsCommon.PRIVATE_TITLE,
-                          subTitle: PersonalSettingsCommon.PRIVATE_DESCRIPTION,
+                          title: PersonalPageCommon.PRIVATE_TITLE,
+                          subTitle: PersonalPageCommon.PRIVATE_DESCRIPTION,
                           listView: Container(
-                            height: 355,
+                            height: 305,
                             child: ListView.builder(
                                 padding: EdgeInsets.zero,
-                                itemCount: PersonalSettingsCommon
+                                itemCount: PersonalPageCommon
                                     .PRIVATE_INFORMATION_LIST.length,
                                 itemBuilder: ((context, index) {
                                   return GestureDetector(
                                     onTap: () {
-                                      // final list = PersonalSettingsCommon
+                                      // final list = PersonalPageCommon
                                       //     .PRIVATE_INFORMATION_LIST;
-                                      // switch (PersonalSettingsCommon
-                                      //     .PRIVATE_INFORMATION_LIST[index]
-                                      //     .title) {
-                                      //   case "Quyền riêng tư":
-                                      //   case "Trang cá nhân và gắn thẻ":
-                                        
-                                      // }
-                                      // for (int i = 0;
-                                      //     i <
-                                      //         PersonalSettingsCommon
-                                      //             .PRIVATE_INFORMATION_LIST
-                                      //             .length;
-                                      //     i++) {
-                                      //   if (PersonalSettingsCommon
-                                      //           .PRIVATE_INFORMATION_LIST[index]
-                                      //           .title ==
-                                      //       PersonalSettingsCommon
-                                      //           .PRIVATE_INFORMATION_LIST[i]
-                                      //           .title) {
-                                      //     Navigator.of(context).push(
-                                      //         MaterialPageRoute(
-                                      //             builder: (_) =>
-                                      //                 PrivateRulesSettingPage()));
-                                      //     return;
-                                      //   }
-                                      // }
+                                      //////////////////////////h/////////////////////////////////////////////////////////////////////
+                                      switch (PersonalPageCommon
+                                              .PRIVATE_INFORMATION_LIST[index]
+                                          ["key"]) {
+                                        case "private_rule":
+                                          {
+                                            Navigator.of(context).push(
+                                                MaterialPageRoute(
+                                                    builder: (_) =>
+                                                        PrivateRulesSettingPage()));
+                                            break;
+                                          }
+                                        case "personal_page_and_tag":
+                                          {
+                                            {
+                                              ScaffoldMessenger.of(context)
+                                                  .showSnackBar(SnackBar(
+                                                      content: Text(
+                                                          "Trang ca nhan ...")));
+                                              break;
+                                            }
+                                          }
+                                        case "public_post":
+                                          {
+                                            {
+                                              ScaffoldMessenger.of(context)
+                                                  .showSnackBar(SnackBar(
+                                                      content: Text(
+                                                          "Bài viết công khai ...")));
+                                              break;
+                                            }
+                                          }
+                                        case "block":
+                                          {
+                                            {
+                                              ScaffoldMessenger.of(context)
+                                                  .showSnackBar(SnackBar(
+                                                      content: Text(
+                                                          "Bài viết công khai ...")));
+                                              break;
+                                            }
+                                          }
+                                        default:
+                                          {
+                                            ScaffoldMessenger.of(context)
+                                                .showSnackBar(SnackBar(
+                                                    content: Text(
+                                                        "Trạng thái hoạt động ...")));
+                                            break;
+                                          }
+                                      }
                                     },
                                     child: GeneralComponent(
                                       [
                                         Text(
-                                            PersonalSettingsCommon
-                                                .PRIVATE_INFORMATION_LIST[index]
-                                                .title,
+                                            PersonalPageCommon
+                                                    .PRIVATE_INFORMATION_LIST[
+                                                index]["data"]["title"],
                                             style: TextStyle(
                                                 fontSize: 15,
                                                 fontWeight: FontWeight.bold,
                                                 color: Colors.white)),
                                         Text(
-                                            PersonalSettingsCommon
-                                                .PRIVATE_INFORMATION_LIST[index]
-                                                .description,
+                                            PersonalPageCommon
+                                                    .PRIVATE_INFORMATION_LIST[
+                                                index]["data"]["subTitle"],
                                             style: TextStyle(
                                                 fontSize: 15,
                                                 color: Colors.grey)),
@@ -151,9 +175,9 @@ class _PersonalSettingsPageState extends State<PersonalSettingsPage> {
                                             borderRadius: BorderRadius.all(
                                                 Radius.circular(20))),
                                         child: SvgPicture.asset(
-                                          PersonalSettingsCommon
-                                              .PRIVATE_INFORMATION_LIST[index]
-                                              .pathSvg,
+                                          PersonalPageCommon
+                                                  .PRIVATE_INFORMATION_LIST[
+                                              index]["data"]["icon"],
                                           color: Colors.white,
                                         ),
                                       ),
@@ -165,14 +189,13 @@ class _PersonalSettingsPageState extends State<PersonalSettingsPage> {
                           )),
                       // notification
                       TitleDescriptionAndContentListWidget(
-                        title: PersonalSettingsCommon.NOTIFICATION_TITLE,
-                        subTitle:
-                            PersonalSettingsCommon.NOTIFICATION_DESCRIPTION,
+                        title: PersonalPageCommon.NOTIFICATION_TITLE,
+                        subTitle: PersonalPageCommon.NOTIFICATION_DESCRIPTION,
                         listView: Container(
                           height: 340,
                           child: ListView.builder(
                               padding: EdgeInsets.zero,
-                              itemCount: PersonalSettingsCommon
+                              itemCount: PersonalPageCommon
                                   .NOTIFICATION_INFORMATION_LIST.length,
                               itemBuilder: ((context, index) {
                                 return GestureDetector(
@@ -182,17 +205,17 @@ class _PersonalSettingsPageState extends State<PersonalSettingsPage> {
                                   child: GeneralComponent(
                                     [
                                       Text(
-                                          PersonalSettingsCommon
+                                          PersonalPageCommon
                                                   .NOTIFICATION_INFORMATION_LIST[
-                                              index][1],
+                                              index]["data"]["title"],
                                           style: TextStyle(
                                               fontSize: 15,
                                               fontWeight: FontWeight.bold,
                                               color: Colors.white)),
                                       Text(
-                                          PersonalSettingsCommon
+                                          PersonalPageCommon
                                                   .NOTIFICATION_INFORMATION_LIST[
-                                              index][2],
+                                              index]["data"]["subTitle"],
                                           style: TextStyle(
                                               fontSize: 15,
                                               color: Colors.grey)),
@@ -206,9 +229,9 @@ class _PersonalSettingsPageState extends State<PersonalSettingsPage> {
                                           borderRadius: BorderRadius.all(
                                               Radius.circular(20))),
                                       child: SvgPicture.asset(
-                                        PersonalSettingsCommon
+                                        PersonalPageCommon
                                                 .NOTIFICATION_INFORMATION_LIST[
-                                            index][0],
+                                            index]["data"]["icon"],
                                         color: Colors.white,
                                       ),
                                     ),
@@ -221,15 +244,15 @@ class _PersonalSettingsPageState extends State<PersonalSettingsPage> {
                       ),
                       // your information in facebook
                       TitleDescriptionAndContentListWidget(
-                        title: PersonalSettingsCommon
+                        title: PersonalPageCommon
                             .YOUR_INFORMATION_IN_FACEBOOK_TITLE,
-                        subTitle: PersonalSettingsCommon
+                        subTitle: PersonalPageCommon
                             .YOUR_INFORMATION_IN_FACEBOOK_DESCRIPTION,
                         listView: Container(
                           height: 290,
                           child: ListView.builder(
                               padding: EdgeInsets.zero,
-                              itemCount: PersonalSettingsCommon
+                              itemCount: PersonalPageCommon
                                   .YOUR_INFORMATION_IN_FACEBOOK_INFORMATION_LIST
                                   .length,
                               itemBuilder: ((context, index) {
@@ -240,17 +263,17 @@ class _PersonalSettingsPageState extends State<PersonalSettingsPage> {
                                   child: GeneralComponent(
                                     [
                                       Text(
-                                          PersonalSettingsCommon
+                                          PersonalPageCommon
                                                   .YOUR_INFORMATION_IN_FACEBOOK_INFORMATION_LIST[
-                                              index][1],
+                                              index]["data"]["title"],
                                           style: TextStyle(
                                               fontSize: 15,
                                               fontWeight: FontWeight.bold,
                                               color: Colors.white)),
                                       Text(
-                                          PersonalSettingsCommon
+                                          PersonalPageCommon
                                                   .YOUR_INFORMATION_IN_FACEBOOK_INFORMATION_LIST[
-                                              index][2],
+                                              index]["data"]["subTitle"],
                                           style: TextStyle(
                                               fontSize: 15,
                                               color: Colors.grey)),
@@ -264,9 +287,9 @@ class _PersonalSettingsPageState extends State<PersonalSettingsPage> {
                                           borderRadius: BorderRadius.all(
                                               Radius.circular(20))),
                                       child: SvgPicture.asset(
-                                        PersonalSettingsCommon
+                                        PersonalPageCommon
                                                 .YOUR_INFORMATION_IN_FACEBOOK_INFORMATION_LIST[
-                                            index][0],
+                                            index]["data"]["icon"],
                                         color: Colors.white,
                                       ),
                                     ),
@@ -279,14 +302,13 @@ class _PersonalSettingsPageState extends State<PersonalSettingsPage> {
                       ),
                       //  file and contact
                       TitleDescriptionAndContentListWidget(
-                        title: PersonalSettingsCommon.FEED_SETTINGS_TITLE,
-                        subTitle:
-                            PersonalSettingsCommon.FEED_SETTINGS_DESCRIPTION,
+                        title: PersonalPageCommon.FEED_SETTINGS_TITLE,
+                        subTitle: PersonalPageCommon.FEED_SETTINGS_DESCRIPTION,
                         listView: Container(
                           height: 120,
                           child: ListView.builder(
                               padding: EdgeInsets.zero,
-                              itemCount: PersonalSettingsCommon
+                              itemCount: PersonalPageCommon
                                   .FEED_SETTINGS_INFORMATION_LIST.length,
                               itemBuilder: ((context, index) {
                                 return GestureDetector(
@@ -296,17 +318,17 @@ class _PersonalSettingsPageState extends State<PersonalSettingsPage> {
                                   child: GeneralComponent(
                                     [
                                       Text(
-                                          PersonalSettingsCommon
+                                          PersonalPageCommon
                                                   .FEED_SETTINGS_INFORMATION_LIST[
-                                              index][1],
+                                              index]["data"]["title"],
                                           style: TextStyle(
                                               fontSize: 15,
                                               fontWeight: FontWeight.bold,
                                               color: Colors.white)),
                                       Text(
-                                          PersonalSettingsCommon
+                                          PersonalPageCommon
                                                   .FEED_SETTINGS_INFORMATION_LIST[
-                                              index][2],
+                                              index]["data"]["subTitle"],
                                           style: TextStyle(
                                               fontSize: 15,
                                               color: Colors.grey)),
@@ -320,9 +342,9 @@ class _PersonalSettingsPageState extends State<PersonalSettingsPage> {
                                           borderRadius: BorderRadius.all(
                                               Radius.circular(20))),
                                       child: SvgPicture.asset(
-                                        PersonalSettingsCommon
+                                        PersonalPageCommon
                                                 .FEED_SETTINGS_INFORMATION_LIST[
-                                            index][0],
+                                            index]["data"]["icon"],
                                         color: Colors.white,
                                       ),
                                     ),
@@ -335,13 +357,13 @@ class _PersonalSettingsPageState extends State<PersonalSettingsPage> {
                       ),
                       //  file and contact
                       TitleDescriptionAndContentListWidget(
-                        title: PersonalSettingsCommon.STORY_TITLE,
-                        subTitle: PersonalSettingsCommon.STORY_DESCRIPTION,
+                        title: PersonalPageCommon.STORY_TITLE,
+                        subTitle: PersonalPageCommon.STORY_DESCRIPTION,
                         listView: Container(
                           height: 70,
                           child: ListView.builder(
                               padding: EdgeInsets.zero,
-                              itemCount: PersonalSettingsCommon
+                              itemCount: PersonalPageCommon
                                   .STORY_INFORMATION_LIST.length,
                               itemBuilder: ((context, index) {
                                 return GestureDetector(
@@ -351,15 +373,17 @@ class _PersonalSettingsPageState extends State<PersonalSettingsPage> {
                                   child: GeneralComponent(
                                     [
                                       Text(
-                                          PersonalSettingsCommon
-                                              .STORY_INFORMATION_LIST[index][1],
+                                          PersonalPageCommon
+                                                  .STORY_INFORMATION_LIST[index]
+                                              ["data"]["title"],
                                           style: TextStyle(
                                               fontSize: 15,
                                               fontWeight: FontWeight.bold,
                                               color: Colors.white)),
                                       Text(
-                                          PersonalSettingsCommon
-                                              .STORY_INFORMATION_LIST[index][2],
+                                          PersonalPageCommon
+                                                  .STORY_INFORMATION_LIST[index]
+                                              ["data"]["subTitle"],
                                           style: TextStyle(
                                               fontSize: 15,
                                               color: Colors.grey)),
@@ -373,8 +397,9 @@ class _PersonalSettingsPageState extends State<PersonalSettingsPage> {
                                           borderRadius: BorderRadius.all(
                                               Radius.circular(20))),
                                       child: SvgPicture.asset(
-                                        PersonalSettingsCommon
-                                            .STORY_INFORMATION_LIST[index][0],
+                                        PersonalPageCommon
+                                                .STORY_INFORMATION_LIST[index]
+                                            ["data"]["icon"],
                                         color: Colors.white,
                                       ),
                                     ),
@@ -387,13 +412,13 @@ class _PersonalSettingsPageState extends State<PersonalSettingsPage> {
                       ),
                       // SHORT CUT
                       TitleDescriptionAndContentListWidget(
-                        title: PersonalSettingsCommon.SHORTCUT_TITLE,
-                        subTitle: PersonalSettingsCommon.SHORTCUT_DESCRIPTION,
+                        title: PersonalPageCommon.SHORTCUT_TITLE,
+                        subTitle: PersonalPageCommon.SHORTCUT_DESCRIPTION,
                         listView: Container(
                           height: 70,
                           child: ListView.builder(
                               padding: EdgeInsets.zero,
-                              itemCount: PersonalSettingsCommon
+                              itemCount: PersonalPageCommon
                                   .SHORTCUT_INFORMATION_LIST.length,
                               itemBuilder: ((context, index) {
                                 return GestureDetector(
@@ -403,17 +428,17 @@ class _PersonalSettingsPageState extends State<PersonalSettingsPage> {
                                   child: GeneralComponent(
                                     [
                                       Text(
-                                          PersonalSettingsCommon
+                                          PersonalPageCommon
                                                   .SHORTCUT_INFORMATION_LIST[
-                                              index][1],
+                                              index]["data"]["title"],
                                           style: TextStyle(
                                               fontSize: 15,
                                               fontWeight: FontWeight.bold,
                                               color: Colors.white)),
                                       Text(
-                                          PersonalSettingsCommon
+                                          PersonalPageCommon
                                                   .SHORTCUT_INFORMATION_LIST[
-                                              index][2],
+                                              index]["data"]["subTitle"],
                                           style: TextStyle(
                                               fontSize: 15,
                                               color: Colors.grey)),
@@ -427,9 +452,9 @@ class _PersonalSettingsPageState extends State<PersonalSettingsPage> {
                                           borderRadius: BorderRadius.all(
                                               Radius.circular(20))),
                                       child: SvgPicture.asset(
-                                        PersonalSettingsCommon
+                                        PersonalPageCommon
                                                 .SHORTCUT_INFORMATION_LIST[
-                                            index][0],
+                                            index]["data"]["icon"],
                                         color: Colors.white,
                                       ),
                                     ),
@@ -449,88 +474,8 @@ class _PersonalSettingsPageState extends State<PersonalSettingsPage> {
               ),
             ]),
             // bottom navigator
-            Column(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                Container(
-                  color: Colors.grey[800],
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children:
-                        SettingCommon.BOTTOM_NAVIGATOR_ITEM_LIST.map((item) {
-                      return GestureDetector(
-                        onTap: (() {
-                          setState(() {
-                            _selectedBottomNavigator = item[1];
-                          });
-                        }),
-                        child: Container(
-                          height: 50,
-                          child: Column(
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                              children: [
-                                // Container(height: 8, color: Colors.blue),
-                                item[0] is IconData
-                                    ? Container(
-                                        height:
-                                            item[1] == _selectedBottomNavigator
-                                                ? 35
-                                                : 30,
-                                        width:
-                                            item[1] == _selectedBottomNavigator
-                                                ? 35
-                                                : 30,
-                                        child: Icon(
-                                          item[0],
-                                          color: item[1] ==
-                                                  _selectedBottomNavigator
-                                              ? Colors.blue
-                                              : Colors.white,
-                                          size: 22,
-                                        ),
-                                      )
-                                    : Container(
-                                        height:
-                                            item[1] == _selectedBottomNavigator
-                                                ? 35
-                                                : 30,
-                                        width:
-                                            item[1] == _selectedBottomNavigator
-                                                ? 35
-                                                : 30,
-                                        padding: EdgeInsets.all(5),
-                                        decoration: BoxDecoration(
-                                            borderRadius: BorderRadius.all(
-                                                Radius.circular(15))),
-                                        child: Image.asset(
-                                          item[0],
-                                        ),
-                                      ),
-                                Wrap(
-                                  children: [
-                                    Text(
-                                      item[1],
-                                      style: TextStyle(
-                                          color: item[1] ==
-                                                  _selectedBottomNavigator
-                                              ? Colors.blue
-                                              : Colors.white,
-                                          fontSize: item[1] ==
-                                                  _selectedBottomNavigator
-                                              ? 12
-                                              : 10),
-                                    )
-                                  ],
-                                )
-                              ]),
-                        ),
-                      );
-                    }).toList(),
-                  ),
-                )
-              ],
-            )
-          ],
+            
+            buildBottomNavigatorBarWidget(context)  ],
         ),
       ),
     );
