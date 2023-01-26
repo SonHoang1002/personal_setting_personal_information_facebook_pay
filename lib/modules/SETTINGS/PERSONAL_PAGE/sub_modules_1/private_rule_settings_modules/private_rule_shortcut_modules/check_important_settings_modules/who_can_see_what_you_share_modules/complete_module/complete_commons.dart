@@ -1,12 +1,11 @@
 import 'package:personal_setting_personal_information_facebook_pay/modules/SETTINGS/setting_commons/general_settings_common.dart';
 
-class WhoCanSeeWhatYouShareCommon {
-  static const String WHO_CAN_SEE_WHAT_YOU_SHARE_TITLE =
-      "Ai có thể nhìn thấy nội dung bạn chia sẻ";
-  static const String WHO_CAN_SEE_WHAT_YOU_SHARE_SUBTITLE =
-      "Chúng tôi sẽ giải thích rõ các lựa chọn để bạn có quyết định phù hợp.";
-  static const Map<String, dynamic> WHO_CAN_SEE_WHAT_YOU_SHARE_CONTENTS = {
-    "key": "who_can_see_what_you_share",
+class CompleteCommons {
+  static const String COMPLETE_TITLE = "Tất cả đã xong";
+  static const String COMPLETE_SUBTITLE =
+      "Cám ơn bạn đã xem lại có thể nhìn thấy nội dung mà bạn chia sẻ. Bạn có thể thay đổi bất kỳ lúc nào trong phần Cài đặt.";
+  static const Map<String, dynamic> COMPLETE_CONTENTS = {
+    "key": "complete",
     "data": [
       {
         "key": "information_on_personal_page",
@@ -25,5 +24,5 @@ class WhoCanSeeWhatYouShareCommon {
       }
     ]
   };
-  static const String WHO_CAN_SEE_WHAT_YOU_SHARE_NEXT = "Tiếp tục";
+  static const String COMPLETE_NEXT = "Xem chủ đề khác";
 }

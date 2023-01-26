@@ -36,8 +36,9 @@ class PostAndStoryCommons {
       {
         "content":
             "Thay đổi người xem được bài viết cũ từ Bạn của bạn bè hoặc Công khai thành chỉ Bạn bè. Bất kì ai được gắn thẻ trong những bài viết này và bạn bè đều vẫn xem được bài viết.",
-        
       },
     ]
   };
+  static const POST_AND_STORY_LIMITATION_DESCRIPTION =
+      "Bạn sắp giới hạn tất cả bài viết cũ trên dòng thời gian. Sau này, cách duy nhất để hoàn tác là thay đổi đối tượng của từng bài viết một.";
 }

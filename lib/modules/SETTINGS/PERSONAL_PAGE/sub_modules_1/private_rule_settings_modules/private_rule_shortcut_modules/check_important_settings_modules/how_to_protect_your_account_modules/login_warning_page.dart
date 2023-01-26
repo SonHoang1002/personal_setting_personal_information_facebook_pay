@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -8,6 +10,8 @@ import 'package:personal_setting_personal_information_facebook_pay/commons/widge
 import 'package:personal_setting_personal_information_facebook_pay/commons/widgets/show_bottom_sheet_widget.dart';
 import 'package:personal_setting_personal_information_facebook_pay/commons/widgets/text_content_widget.dart';
 import 'package:personal_setting_personal_information_facebook_pay/modules/SETTINGS/PERSONAL_PAGE/sub_modules_1/private_rule_settings_modules/private_rule_shortcut_modules/check_important_settings_modules/check_important_settings_common.dart';
+import 'package:personal_setting_personal_information_facebook_pay/modules/SETTINGS/PERSONAL_PAGE/sub_modules_1/private_rule_settings_modules/private_rule_shortcut_modules/check_important_settings_modules/how_to_protect_your_account_modules/how_to_protect_your_account_commons.dart';
+import 'package:personal_setting_personal_information_facebook_pay/modules/SETTINGS/PERSONAL_PAGE/sub_modules_1/private_rule_settings_modules/private_rule_shortcut_modules/check_important_settings_modules/how_to_protect_your_account_modules/password_page.dart';
 import 'package:personal_setting_personal_information_facebook_pay/modules/SETTINGS/PERSONAL_PAGE/sub_modules_1/private_rule_settings_modules/private_rule_shortcut_modules/check_important_settings_modules/who_can_see_what_you_share_modules/block_module/block_page.dart';
 import 'package:personal_setting_personal_information_facebook_pay/modules/SETTINGS/PERSONAL_PAGE/sub_modules_1/private_rule_settings_modules/private_rule_shortcut_modules/check_important_settings_modules/who_can_see_what_you_share_modules/post_and_story_module/post_and_story_commons.dart';
 import 'package:personal_setting_personal_information_facebook_pay/modules/SETTINGS/PERSONAL_PAGE/sub_modules_1/private_rule_settings_modules/private_rule_shortcut_modules/check_important_settings_modules/who_can_see_what_you_share_modules/post_and_story_module/selection_for_post_and_story_modules/selection_default_object_page.dart';
@@ -16,11 +20,9 @@ import 'package:personal_setting_personal_information_facebook_pay/modules/SETTI
 
 import '../../../../../../../../../commons/widgets/content_and_status_widget.dart';
 
-class PostAndStoryPage extends StatelessWidget {
+class LoginWarningPage extends StatelessWidget {
   late double width = 0;
   late double height = 0;
-
-  String _selectedBottomNavigator = "Trang chủ";
 
   @override
   Widget build(BuildContext context) {
@@ -54,8 +56,8 @@ class PostAndStoryPage extends StatelessWidget {
                   ),
                   Container(
                       child: buildTextContent(
-                          PostAndStoryCommons.POST_AND_STORY_APPBAR_TITLE,
-                          false)),
+                          LoginWarningCommons.LOGIN_WARNING_APPAR_TITLE,
+                          true,fontSize:20,)),
                 ]),
           ),
           // main content
@@ -68,63 +70,52 @@ class PostAndStoryPage extends StatelessWidget {
                 children: [
                   // title
                   buildTextContent(
-                      PostAndStoryCommons.POST_AND_STORY_TITLE, false),
-                  // default object
-                  buildContentAndStatusWidget(
-                      PostAndStoryCommons
-                          .POST_AND_STORY_DEFAULT_OBJECT["title"],
-                      contents: PostAndStoryCommons
-                          .POST_AND_STORY_DEFAULT_OBJECT["data"], function: () {
-                    pushToNextScreen(context, SelectionDefaultObjectPage());
-                  }),
-                  buildContentAndStatusWidget(
-                      PostAndStoryCommons.POST_AND_STORY_STORY["title"],
-                      contents: PostAndStoryCommons
-                          .POST_AND_STORY_STORY["data"], function: () {
-                    pushToNextScreen(
-                        context, SelectionPrivateRuleOfStoryPage());
-                  }),
-                  buildContentAndStatusWidget(
-                      PostAndStoryCommons
-                          .POST_AND_STORY_OLD_STORY_LIMITATION["title"],
-                      contents: PostAndStoryCommons
-                          .POST_AND_STORY_OLD_STORY_LIMITATION["data"]),
-                  ElevatedButton(
-                    onPressed: () {
-                      showBottomSheetCheckImportantSettings(
-                          context, 200, "Giới hạn tất cả ?",
-                          widget: Container(
-                            padding: EdgeInsets.symmetric(horizontal: 5),
-                            child: Column(children: [
-                              buildTextContent(
-                                  PostAndStoryCommons
-                                      .POST_AND_STORY_LIMITATION_DESCRIPTION,
-                                  false),
-                              SizedBox(
-                                height: 10,
-                              ),
-                              ElevatedButton(
-                                onPressed: () {},
-                                child: Text(
-                                  "Giới hạn",
-                                  style: TextStyle(
-                                      color: Colors.white, fontSize: 17),
-                                ),
-                                style: ElevatedButton.styleFrom(
-                                    fixedSize: Size(width, 40),
-                                    backgroundColor: Colors.grey[800]),
-                              )
-                            ]),
-                          ));
-                    },
-                    child: Text(
-                      "Giới hạn",
-                      style: TextStyle(color: Colors.white, fontSize: 17),
-                    ),
-                    style: ElevatedButton.styleFrom(
-                        fixedSize: Size(width * 0.9, 40),
-                        backgroundColor: Colors.grey[800]),
-                  )
+                      LoginWarningCommons.LOGIN_WARNING_TITLE, true,
+                      fontSize: 22),
+                  SizedBox(
+                    height: 5,
+                  ),
+                  buildTextContent(
+                      LoginWarningCommons.LOGIN_WARNING_SUBTITLE, false,
+                      fontSize: 15,colorWord: Colors.grey),
+                  ListView.builder(
+                      shrinkWrap: true,
+                      padding: EdgeInsets.zero,
+                      itemCount: LoginWarningCommons
+                          .LOGIN_WARNING_CONTENTS["data"].length,
+                      itemBuilder: ((context, index) {
+                        final data =
+                            LoginWarningCommons.LOGIN_WARNING_CONTENTS["data"];
+                        return GeneralComponent(
+                          [
+                            buildTextContent(data[index]["title"], true,
+                                fontSize: 17),
+                            buildTextContent(data[index]["subTitle"], true,
+                                fontSize: 14, colorWord: Colors.grey)
+                          ],
+                          prefixWidget: Container(
+                              height: 40,
+                              width: 40,
+                              margin: EdgeInsets.only(right: 10),
+                              decoration: BoxDecoration(
+                                  color: Colors.grey[800],
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(20))),
+                              padding: EdgeInsets.all(10),
+                              child: SvgPicture.asset(
+                                data[index]["icon"],
+                                color: Colors.white,
+                              )),
+                          suffixWidget: Container(
+                            height: 30,
+                            width: 30,
+                            child: Checkbox(
+                              onChanged: ((value) {}),
+                              value: true,
+                            ),
+                          ),
+                        );
+                      }))
                 ],
               ),
             ),
@@ -150,7 +141,7 @@ class PostAndStoryPage extends StatelessWidget {
                             height: 20,
                             width: 20,
                             decoration: BoxDecoration(
-                                color: index < 2 ? Colors.blue : Colors.white,
+                                color: index < 1 ? Colors.blue : Colors.white,
                                 borderRadius:
                                     BorderRadius.all(Radius.circular(10))),
                           );
@@ -160,9 +151,9 @@ class PostAndStoryPage extends StatelessWidget {
                       margin: EdgeInsets.only(right: 10),
                       child: ElevatedButton(
                         onPressed: (() {
-                          pushToNextScreen(context, BlockPage());
+                          pushToNextScreen(context, PasswordPage());
                         }),
-                        child: Text("Tiep tuc"),
+                        child: Text(LoginWarningCommons.LOGIN_WARNING_SKIP),
                       ))
                 ]),
           ),

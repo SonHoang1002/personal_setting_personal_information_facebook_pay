@@ -8,8 +8,8 @@ import 'package:personal_setting_personal_information_facebook_pay/commons/widge
 import 'package:personal_setting_personal_information_facebook_pay/commons/widgets/text_content_widget.dart';
 import 'package:personal_setting_personal_information_facebook_pay/modules/SETTINGS/PERSONAL_PAGE/sub_modules_1/private_rule_settings_modules/private_rule_shortcut_modules/check_important_settings_modules/check_important_settings_common.dart';
 import 'package:personal_setting_personal_information_facebook_pay/modules/SETTINGS/PERSONAL_PAGE/sub_modules_1/private_rule_settings_modules/private_rule_shortcut_modules/check_important_settings_modules/who_can_see_what_you_share_modules/block_module/block_commons.dart';
+import 'package:personal_setting_personal_information_facebook_pay/modules/SETTINGS/PERSONAL_PAGE/sub_modules_1/private_rule_settings_modules/private_rule_shortcut_modules/check_important_settings_modules/who_can_see_what_you_share_modules/complete_module/complete_page.dart';
 import 'package:personal_setting_personal_information_facebook_pay/modules/SETTINGS/PERSONAL_PAGE/sub_modules_1/private_rule_settings_modules/private_rule_shortcut_modules/check_important_settings_modules/who_can_see_what_you_share_modules/post_and_story_module/post_and_story_commons.dart';
-import 'package:personal_setting_personal_information_facebook_pay/modules/SETTINGS/PERSONAL_PAGE/sub_modules_1/private_rule_settings_modules/private_rule_shortcut_modules/check_important_settings_modules/who_can_see_what_you_share_page.dart';
 import 'package:personal_setting_personal_information_facebook_pay/modules/SETTINGS/setting_commons/general_settings_common.dart';
 
 import '../../../../../../../../../commons/widgets/content_and_status_widget.dart';
@@ -130,6 +130,8 @@ class BlockPage extends StatelessWidget {
                           color: Colors.blue,
                         )),
                   ),
+                  _buildBlockedComponent(
+                      SettingCommons.PATH_IMG + "cat_1.png", "Nguyen Van A")
                 ],
               ),
             ),
@@ -164,7 +166,9 @@ class BlockPage extends StatelessWidget {
                   Container(
                       margin: EdgeInsets.only(right: 10),
                       child: ElevatedButton(
-                        onPressed: (() {}),
+                        onPressed: (() {
+                          pushToNextScreen(context, CompletePage());
+                        }),
                         child: Text("Tiep tuc"),
                       ))
                 ]),
@@ -174,4 +178,51 @@ class BlockPage extends StatelessWidget {
       ),
     );
   }
+}
+
+_buildBlockedComponent(
+  String imgPath,
+  String title,
+) {
+  return Container(
+    // color: Colors.red,
+    // padding: EdgeInsets.symmetric(horizontal: 10),
+    child: Column(children: [
+      Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Row(
+            children: [
+              Container(
+                height: 40,
+                width: 40,
+                margin: EdgeInsets.only(left: 10, right: 10),
+                child: Image.asset(
+                  imgPath,
+                ),
+              ),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisSize: MainAxisSize.max,
+                children: [
+                  buildTextContent(
+                    title,
+                    false,
+                    fontSize: 16,
+                    colorWord: Colors.white,
+                  ),
+                ],
+              ),
+            ],
+          ),
+          ElevatedButton(
+            style: ElevatedButton.styleFrom(
+                fixedSize: Size(85, 30), backgroundColor: Colors.blue),
+            onPressed: (() {}),
+            child: Text("Bo chan"),
+          )
+        ],
+      ),
+    ]),
+  );
 }

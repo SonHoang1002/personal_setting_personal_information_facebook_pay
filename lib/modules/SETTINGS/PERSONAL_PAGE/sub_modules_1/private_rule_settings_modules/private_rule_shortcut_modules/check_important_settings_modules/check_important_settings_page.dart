@@ -5,7 +5,7 @@ import 'package:personal_setting_personal_information_facebook_pay/commons/route
 import 'package:personal_setting_personal_information_facebook_pay/commons/widgets/information_component_widget.dart';
 import 'package:personal_setting_personal_information_facebook_pay/commons/widgets/text_content_widget.dart';
 import 'package:personal_setting_personal_information_facebook_pay/modules/SETTINGS/PERSONAL_PAGE/sub_modules_1/private_rule_settings_modules/private_rule_shortcut_modules/check_important_settings_modules/check_important_settings_common.dart';
-import 'package:personal_setting_personal_information_facebook_pay/modules/SETTINGS/PERSONAL_PAGE/sub_modules_1/private_rule_settings_modules/private_rule_shortcut_modules/check_important_settings_modules/who_can_see_what_you_share_page.dart';
+import 'package:personal_setting_personal_information_facebook_pay/modules/SETTINGS/PERSONAL_PAGE/sub_modules_1/private_rule_settings_modules/private_rule_shortcut_modules/check_important_settings_modules/check_private_rule_component_page.dart';
 import 'package:personal_setting_personal_information_facebook_pay/modules/SETTINGS/setting_commons/general_settings_common.dart';
 
 import '../../../../../../../commons/widgets/show_bottom_sheet_widget.dart';
@@ -176,7 +176,7 @@ class CheckImportantSettingsPage extends StatelessWidget {
                           onTap: (() {
                             pushToNextScreen(
                               context,
-                              WhoCanSeeWhatYouSharePage(
+                              CheckPrivateRuleComponentPage(
                                   path: CheckImportantSettingsCommon
                                           .CHECK_IMPORTANT_SETTINGS_CONTENTS[
                                       "data"][index]["img"],

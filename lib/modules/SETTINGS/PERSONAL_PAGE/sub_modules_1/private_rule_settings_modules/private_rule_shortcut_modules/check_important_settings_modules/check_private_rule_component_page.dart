@@ -12,13 +12,15 @@ import 'package:personal_setting_personal_information_facebook_pay/modules/SETTI
 import 'package:personal_setting_personal_information_facebook_pay/modules/SETTINGS/PERSONAL_PAGE/sub_modules_1/private_rule_settings_modules/private_rule_shortcut_modules/check_important_settings_modules/how_to_protect_your_account_modules/how_to_protect_your_account_commons.dart';
 import 'package:personal_setting_personal_information_facebook_pay/modules/SETTINGS/PERSONAL_PAGE/sub_modules_1/private_rule_settings_modules/private_rule_shortcut_modules/check_important_settings_modules/set_your_data_on_facebook_modules/set_your_data_on_facebook_commons.dart';
 import 'package:personal_setting_personal_information_facebook_pay/modules/SETTINGS/PERSONAL_PAGE/sub_modules_1/private_rule_settings_modules/private_rule_shortcut_modules/check_important_settings_modules/who_can_see_what_you_share_modules/block_module/block_page.dart';
+import 'package:personal_setting_personal_information_facebook_pay/modules/SETTINGS/PERSONAL_PAGE/sub_modules_1/private_rule_settings_modules/private_rule_shortcut_modules/check_important_settings_modules/who_can_see_what_you_share_modules/check_private_rule_component_commons.dart';
 import 'package:personal_setting_personal_information_facebook_pay/modules/SETTINGS/PERSONAL_PAGE/sub_modules_1/private_rule_settings_modules/private_rule_shortcut_modules/check_important_settings_modules/who_can_see_what_you_share_modules/information_on_personal_module/information_on_personal_page_page.dart';
 import 'package:personal_setting_personal_information_facebook_pay/modules/SETTINGS/PERSONAL_PAGE/sub_modules_1/private_rule_settings_modules/private_rule_shortcut_modules/check_important_settings_modules/who_can_see_what_you_share_modules/post_and_story_module/post_and_story_page.dart';
-import 'package:personal_setting_personal_information_facebook_pay/modules/SETTINGS/PERSONAL_PAGE/sub_modules_1/private_rule_settings_modules/private_rule_shortcut_modules/check_important_settings_modules/who_can_see_what_you_share_modules/who_can_see_what_you_share_commons.dart';
 import 'package:personal_setting_personal_information_facebook_pay/modules/SETTINGS/setting_commons/general_settings_common.dart';
 
-class WhoCanSeeWhatYouSharePage extends StatelessWidget {
-  WhoCanSeeWhatYouSharePage({required this.path, required this.name});
+import 'how_to_protect_your_account_modules/login_warning_page.dart';
+
+class CheckPrivateRuleComponentPage extends StatelessWidget {
+  CheckPrivateRuleComponentPage({required this.path, required this.name});
   String path;
   String name;
 
@@ -91,15 +93,12 @@ class WhoCanSeeWhatYouSharePage extends StatelessWidget {
                       case "who_can_see_what_you_share":
                         nextRoute = InformationOnPersonalPagePage();
                         break;
-
                       case "how_to_protect_your_account":
-                        nextRoute = PostAndStoryPage();
+                        nextRoute = LoginWarningPage();
                         break;
-
                       case "how_people_can_find_you_on_facebook":
-                        nextRoute = BlockPage();
+                        nextRoute = InformationOnPersonalPagePage();
                         break;
-
                       case "set_your_data_on_facebook":
                         nextRoute = InformationOnPersonalPagePage();
                         break;
@@ -125,11 +124,12 @@ class WhoCanSeeWhatYouSharePage extends StatelessWidget {
 
     switch (name) {
       case "who_can_see_what_you_share":
-        title = WhoCanSeeWhatYouShareCommon.WHO_CAN_SEE_WHAT_YOU_SHARE_TITLE;
-        subTitle =
-            WhoCanSeeWhatYouShareCommon.WHO_CAN_SEE_WHAT_YOU_SHARE_SUBTITLE;
-        contents =
-            WhoCanSeeWhatYouShareCommon.WHO_CAN_SEE_WHAT_YOU_SHARE_CONTENTS;
+        title =
+            CheckPrivateRuleComponentCommons.CHECK_PRIVATE_RULE_COMPONENT_TITLE;
+        subTitle = CheckPrivateRuleComponentCommons
+            .CHECK_PRIVATE_RULE_COMPONENT_SUBTITLE;
+        contents = CheckPrivateRuleComponentCommons
+            .CHECK_PRIVATE_RULE_COMPONENT_CONTENTS;
         break;
 
       case "how_to_protect_your_account":

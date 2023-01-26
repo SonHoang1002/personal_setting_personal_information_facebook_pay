@@ -9,7 +9,7 @@ import 'package:personal_setting_personal_information_facebook_pay/commons/widge
 import 'package:personal_setting_personal_information_facebook_pay/commons/widgets/text_content_widget.dart';
 import 'package:personal_setting_personal_information_facebook_pay/modules/SETTINGS/PERSONAL_PAGE/sub_modules_1/private_rule_settings_modules/private_rule_shortcut_modules/check_important_settings_modules/check_important_settings_common.dart';
 import 'package:personal_setting_personal_information_facebook_pay/modules/SETTINGS/PERSONAL_PAGE/sub_modules_1/private_rule_settings_modules/private_rule_shortcut_modules/check_important_settings_modules/check_important_settings_page.dart';
-import 'package:personal_setting_personal_information_facebook_pay/modules/SETTINGS/PERSONAL_PAGE/sub_modules_1/private_rule_settings_modules/private_rule_shortcut_modules/check_important_settings_modules/who_can_see_what_you_share_page.dart';
+import 'package:personal_setting_personal_information_facebook_pay/modules/SETTINGS/PERSONAL_PAGE/sub_modules_1/private_rule_settings_modules/private_rule_shortcut_modules/check_important_settings_modules/who_can_see_what_you_share_modules/post_and_story_module/post_and_story_page.dart';
 import 'package:personal_setting_personal_information_facebook_pay/modules/SETTINGS/setting_commons/general_settings_common.dart';
 import 'package:personal_setting_personal_information_facebook_pay/providers/choose_object_provider.dart';
 import 'package:provider/provider.dart';
@@ -190,7 +190,7 @@ class InformationOnPersonalPagePage extends StatelessWidget {
                             height: 20,
                             width: 20,
                             decoration: BoxDecoration(
-                                color: Colors.blue,
+                                color: index == 0 ? Colors.blue : Colors.white,
                                 borderRadius:
                                     BorderRadius.all(Radius.circular(10))),
                           );
@@ -199,7 +199,9 @@ class InformationOnPersonalPagePage extends StatelessWidget {
                   Container(
                       margin: EdgeInsets.only(right: 10),
                       child: ElevatedButton(
-                        onPressed: (() {}),
+                        onPressed: (() {
+                          pushToNextScreen(context, PostAndStoryPage());
+                        }),
                         child: Text("Tiep tuc"),
                       ))
                 ]),
