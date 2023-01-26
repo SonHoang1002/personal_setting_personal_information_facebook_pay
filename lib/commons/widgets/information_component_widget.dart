@@ -58,7 +58,13 @@ class GeneralComponent extends StatelessWidget {
                               mainAxisSize: MainAxisSize.min,
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               crossAxisAlignment: CrossAxisAlignment.start,
-                              children: contentWidget.map((itemWidget) => itemWidget).toList()),
+                              children: contentWidget.map((itemWidget) {
+                                // if (itemWidget != SizedBox() &&
+                                //     itemWidget != Container()) {
+                                  return itemWidget;
+                                // }
+                                // return SizedBox();
+                              }).toList()),
                         ),
                       ),
                       suffixWidget != null

@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 import 'package:personal_setting_personal_information_facebook_pay/commons/routes/push_to_new_screen.dart';
 import 'package:personal_setting_personal_information_facebook_pay/commons/widgets/information_component_widget.dart';
 import 'package:personal_setting_personal_information_facebook_pay/commons/widgets/text_content_widget.dart';
 import 'package:personal_setting_personal_information_facebook_pay/modules/SETTINGS/PERSONAL_PAGE/sub_modules_1/private_rule_settings_modules/private_rule_shortcut_modules/check_important_settings_modules/check_important_settings_common.dart';
-import 'package:personal_setting_personal_information_facebook_pay/modules/SETTINGS/PERSONAL_PAGE/sub_modules_1/private_rule_settings_modules/private_rule_shortcut_modules/check_important_settings_modules/who_can_see_what_you_share_modules/who_can_see_what_you_share_page.dart';
+import 'package:personal_setting_personal_information_facebook_pay/modules/SETTINGS/PERSONAL_PAGE/sub_modules_1/private_rule_settings_modules/private_rule_shortcut_modules/check_important_settings_modules/who_can_see_what_you_share_page.dart';
 import 'package:personal_setting_personal_information_facebook_pay/modules/SETTINGS/setting_commons/general_settings_common.dart';
+
+import '../../../../../../../commons/widgets/show_bottom_sheet_widget.dart';
 
 class CheckImportantSettingsPage extends StatelessWidget {
   late double width = 0;
@@ -52,7 +52,69 @@ class CheckImportantSettingsPage extends StatelessWidget {
                     // height: 70,
                     child: GestureDetector(
                       onTap: () {
-                        showBottomSheetCheckImportantSettings(context);
+                        showBottomSheetCheckImportantSettings(
+                            context, 235, "Bạn có thể làm gì ?",
+                            widget: Container(
+                              child: ListView.builder(
+                                  padding: EdgeInsets.zero,
+                                  shrinkWrap: true,
+                                  itemCount: CheckImportantSettingsCommon
+                                      .CHECK_IMPORTANT_SETTINGS_BOTTOM_SHEET_CONTENTS[
+                                          "data"]
+                                      .length,
+                                  itemBuilder: ((context, index) {
+                                    return Container(
+                                      margin: EdgeInsets.symmetric(vertical: 5),
+                                      child: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.start,
+                                        children: [
+                                          GestureDetector(
+                                            onTap: (() {}),
+                                            child: GeneralComponent(
+                                              [
+                                                buildTextContent(
+                                                    CheckImportantSettingsCommon
+                                                            .CHECK_IMPORTANT_SETTINGS_BOTTOM_SHEET_CONTENTS[
+                                                        "data"][index]["title"],
+                                                    true,
+                                                    fontSize: 18),
+                                                SizedBox(
+                                                  height: 5,
+                                                ),
+                                                buildTextContent(
+                                                    CheckImportantSettingsCommon
+                                                            .CHECK_IMPORTANT_SETTINGS_BOTTOM_SHEET_CONTENTS[
+                                                        "data"][index]["subTitle"],
+                                                    true,
+                                                    fontSize: 16,
+                                                    colorWord: Colors.grey),
+                                              ],
+                                              prefixWidget: Container(
+                                                padding: EdgeInsets.only(
+                                                  right: 15,
+                                                ),
+                                                child: SvgPicture.asset(
+                                                  CheckImportantSettingsCommon
+                                                          .CHECK_IMPORTANT_SETTINGS_BOTTOM_SHEET_CONTENTS[
+                                                      "data"][index]["icon"],
+                                                  height: 20,
+                                                  color: Colors.white,
+                                                ),
+                                              ),
+                                              padding: EdgeInsets.symmetric(
+                                                  horizontal: 5, vertical: 5),
+                                              changeBackground:
+                                                  Colors.transparent,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    );
+                                  })),
+                            ));
                       },
                       child: Icon(
                         SettingCommons.MENU_ICON_DATA,
@@ -112,30 +174,16 @@ class CheckImportantSettingsPage extends StatelessWidget {
                       itemBuilder: ((context, index) {
                         return GestureDetector(
                           onTap: (() {
-                            switch (CheckImportantSettingsCommon
-                                        .CHECK_IMPORTANT_SETTINGS_CONTENTS[
-                                    "data"][index]["key"]) {
-                                  case "who_can_see_what_you_share":
-                                    pushToNextScreen(
-                                        context, WhoCanSeeWhatYouSharePage());
-                                    break;
-                                  case "how_to_protect_your_account":
-                                  // pushAndReplaceToNextScreen(
-                                  //       context, newScreen);
-                                  //   break;
-                                  case "how_people_can_find_you_on_facebook":
-                                  // pushAndReplaceToNextScreen(
-                                  //       context, newScreen);
-                                  //   break;
-                                  case "set_your_data_on_facebook":
-                                  // pushAndReplaceToNextScreen(
-                                  //       context, newScreen);
-                                  //   break;
-                                  default:
-                                  // pushAndReplaceToNextScreen(
-                                  //       context, newScreen);
-                                  //   break;
-                                }
+                            pushToNextScreen(
+                              context,
+                              WhoCanSeeWhatYouSharePage(
+                                  path: CheckImportantSettingsCommon
+                                          .CHECK_IMPORTANT_SETTINGS_CONTENTS[
+                                      "data"][index]["img"],
+                                  name: CheckImportantSettingsCommon
+                                          .CHECK_IMPORTANT_SETTINGS_CONTENTS[
+                                      "data"][index]["key"]),
+                            );
                           }),
                           child: _buildCheckImportantSettingContentItem(
                               CheckImportantSettingsCommon
@@ -199,112 +247,110 @@ Widget _buildCheckImportantSettingContentItem(String path, String title,
   );
 }
 
-showBottomSheetCheckImportantSettings(BuildContext context) {
-  showMaterialModalBottomSheet(
-      backgroundColor: Colors.transparent,
-      context: context,
-      builder: (context) {
-        return StatefulBuilder(builder: (context, setStateFull) {
-          return Container(
-            padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-            height: 235,
-            decoration: BoxDecoration(
-                color: Colors.grey[900],
-                borderRadius: BorderRadius.only(
-                    topRight: Radius.circular(15),
-                    topLeft: Radius.circular(15))),
-            child: Column(children: [
-              // drag and drop navbar
-              Container(
-                padding: EdgeInsets.only(top: 5),
-                margin: EdgeInsets.only(bottom: 15),
-                child: Container(
-                  height: 4,
-                  width: 40,
-                  decoration: BoxDecoration(
-                      color: Colors.grey,
-                      borderRadius: BorderRadius.only(
-                          topRight: Radius.circular(15),
-                          topLeft: Radius.circular(15))),
-                ),
-              ),
-              //  title
-              Text(
-                "Bạn có thể làm gì ?",
-                style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold),
-              ),
-              //content
-              Padding(
-                padding: EdgeInsets.symmetric(horizontal: 10),
-                child: Divider(
-                  height: 10,
-                  color: Colors.white,
-                ),
-              ),
-              Container(
-                child: ListView.builder(
-                    padding: EdgeInsets.zero,
-                    shrinkWrap: true,
-                    itemCount: CheckImportantSettingsCommon
-                        .CHECK_IMPORTANT_SETTINGS_BOTTOM_SHEET_CONTENTS["data"]
-                        .length,
-                    itemBuilder: ((context, index) {
-                      return Container(
-                        margin: EdgeInsets.symmetric(vertical: 5),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: [
-                            GestureDetector(
-                              onTap: (() {
-                                
-                              }),
-                              child: GeneralComponent(
-                                [
-                                  buildTextContent(
-                                      CheckImportantSettingsCommon
-                                              .CHECK_IMPORTANT_SETTINGS_BOTTOM_SHEET_CONTENTS[
-                                          "data"][index]["title"],
-                                      true,
-                                      fontSize: 18),
-                                  SizedBox(
-                                    height: 5,
-                                  ),
-                                  buildTextContent(
-                                      CheckImportantSettingsCommon
-                                              .CHECK_IMPORTANT_SETTINGS_BOTTOM_SHEET_CONTENTS[
-                                          "data"][index]["subTitle"],
-                                      true,
-                                      fontSize: 16,
-                                      colorWord: Colors.grey),
-                                ],
-                                prefixWidget: Container(
-                                  padding: EdgeInsets.only(
-                                    right: 15,
-                                  ),
-                                  child: SvgPicture.asset(
-                                    CheckImportantSettingsCommon
-                                            .CHECK_IMPORTANT_SETTINGS_BOTTOM_SHEET_CONTENTS[
-                                        "data"][index]["icon"],
-                                    height: 20,
-                                    color: Colors.white,
-                                  ),
-                                ),
-                                padding: EdgeInsets.symmetric(
-                                    horizontal: 5, vertical: 5),
-                                changeBackground: Colors.transparent,
-                              ),
-                            ),
-                          ],
-                        ),
-                      );
-                    })),
-              )
-            ]),
-          );
-        });
-      });
-}
+// showBottomSheetCheckImportantSettings(BuildContext context) {
+//   showMaterialModalBottomSheet(
+//       backgroundColor: Colors.transparent,
+//       context: context,
+//       builder: (context) {
+//         return StatefulBuilder(builder: (context, setStateFull) {
+//           return Container(
+//             padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+//             height: 235,
+//             decoration: BoxDecoration(
+//                 color: Colors.grey[900],
+//                 borderRadius: BorderRadius.only(
+//                     topRight: Radius.circular(15),
+//                     topLeft: Radius.circular(15))),
+//             child: Column(children: [
+//               // drag and drop navbar
+//               Container(
+//                 padding: EdgeInsets.only(top: 5),
+//                 margin: EdgeInsets.only(bottom: 15),
+//                 child: Container(
+//                   height: 4,
+//                   width: 40,
+//                   decoration: BoxDecoration(
+//                       color: Colors.grey,
+//                       borderRadius: BorderRadius.only(
+//                           topRight: Radius.circular(15),
+//                           topLeft: Radius.circular(15))),
+//                 ),
+//               ),
+//               //  title
+//               Text(
+//                 "Bạn có thể làm gì ?",
+//                 style: TextStyle(
+//                     color: Colors.white,
+//                     fontSize: 20,
+//                     fontWeight: FontWeight.bold),
+//               ),
+//               //content
+//               Padding(
+//                 padding: EdgeInsets.symmetric(horizontal: 10),
+//                 child: Divider(
+//                   height: 10,
+//                   color: Colors.white,
+//                 ),
+//               ),
+//               Container(
+//                 child: ListView.builder(
+//                     padding: EdgeInsets.zero,
+//                     shrinkWrap: true,
+//                     itemCount: CheckImportantSettingsCommon
+//                         .CHECK_IMPORTANT_SETTINGS_BOTTOM_SHEET_CONTENTS["data"]
+//                         .length,
+//                     itemBuilder: ((context, index) {
+//                       return Container(
+//                         margin: EdgeInsets.symmetric(vertical: 5),
+//                         child: Column(
+//                           crossAxisAlignment: CrossAxisAlignment.start,
+//                           mainAxisAlignment: MainAxisAlignment.start,
+//                           children: [
+//                             GestureDetector(
+//                               onTap: (() {}),
+//                               child: GeneralComponent(
+//                                 [
+//                                   buildTextContent(
+//                                       CheckImportantSettingsCommon
+//                                               .CHECK_IMPORTANT_SETTINGS_BOTTOM_SHEET_CONTENTS[
+//                                           "data"][index]["title"],
+//                                       true,
+//                                       fontSize: 18),
+//                                   SizedBox(
+//                                     height: 5,
+//                                   ),
+//                                   buildTextContent(
+//                                       CheckImportantSettingsCommon
+//                                               .CHECK_IMPORTANT_SETTINGS_BOTTOM_SHEET_CONTENTS[
+//                                           "data"][index]["subTitle"],
+//                                       true,
+//                                       fontSize: 16,
+//                                       colorWord: Colors.grey),
+//                                 ],
+//                                 prefixWidget: Container(
+//                                   padding: EdgeInsets.only(
+//                                     right: 15,
+//                                   ),
+//                                   child: SvgPicture.asset(
+//                                     CheckImportantSettingsCommon
+//                                             .CHECK_IMPORTANT_SETTINGS_BOTTOM_SHEET_CONTENTS[
+//                                         "data"][index]["icon"],
+//                                     height: 20,
+//                                     color: Colors.white,
+//                                   ),
+//                                 ),
+//                                 padding: EdgeInsets.symmetric(
+//                                     horizontal: 5, vertical: 5),
+//                                 changeBackground: Colors.transparent,
+//                               ),
+//                             ),
+//                           ],
+//                         ),
+//                       );
+//                     })),
+//               )
+//             ]),
+//           );
+//         });
+//       });
+// }

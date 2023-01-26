@@ -4,10 +4,12 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class SettingCommons {
   static const IconData BACK_ICON_DATA = CupertinoIcons.back;
-   static const IconData NEXT_ICON_DATA = FontAwesomeIcons.chevronRight;
-   static const IconData CANCEL_ICON_DATA = Icons.close;
-   static const IconData MENU_ICON_DATA = FontAwesomeIcons.ellipsis;
-   
+  static const IconData NEXT_ICON_DATA = FontAwesomeIcons.chevronRight;
+  static const IconData CANCEL_ICON_DATA = Icons.close;
+
+  static const IconData MENU_ICON_DATA = FontAwesomeIcons.ellipsis;
+  static const IconData DOWN_ICON_DATA = FontAwesomeIcons.caretDown;
+
   static const PATH_IMG = "assets/images/";
   static const PATH_ICON = "assets/icons/";
 
